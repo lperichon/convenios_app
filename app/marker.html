@@ -1,0 +1,11 @@
+<ons-page class="center" ng-controller="markerController">
+	<h1>{{deal.business_name}}</h1>
+	<h2>{{deal.title}}</h2>
+	<p>{{deal.description}}</p>
+	<ul class="deal-contact-info">
+		<li><label>Teléfono:</label>{{deal.business.phone}}</li>
+		<li><label>Email:</label>{{deal.business.email}}</li>
+		<li><label>Web:</label><a href='{{deal.business.url}}'></a>{{deal.business.url}}</li>
+		<li><label>Dirección:</label>{{deal.business.address}}, {{deal.business.city}}</li>
+	</ul>
+</ons-page>

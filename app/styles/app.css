@@ -1,0 +1,23 @@
+.angular-google-map-container {
+	height:100%; 
+	width:100%; 
+	position:absolute !important; 
+	top:0; 
+	left:0;
+}
+
+.deal-contact-info {
+	margin: 0 auto;
+	display: inline-block;
+	text-align: left;
+}
+
+.deal-contact-info label { 
+	width: 100px;
+	display: inline-block;
+}
+
+.topcoat-search-input {
+	margin: 7px;
+	width: 99%;
+}

@@ -1,0 +1,22 @@
+<ons-page class="center" ng-controller="mapController">
+    <ons-navigator-toolbar title="Mapa de convenios"  right-button-icon="fa fa-lg fa-angle-right"
+                           on-right-button-click="ons.navigator.pushPage('page2.html')">
+    </ons-navigator-toolbar>
+    <google-map center="map.center" zoom="map.zoom" draggable="true">
+    	<markers
+             models="markers"
+             labelContent="'business_name'"
+             click="'onClicked'"
+             events="markersEvents"
+             coords="'business'"
+            >
+    	</markers>
+    </google-map>
+    <div>
+	    <ul class="example-animate-container">
+		    <li ng-repeat="marker in markers">
+		      [{{$index + 1}}] {{marker.title}} {{marker.business.latitude}}, {{marker.business.longitude}}
+		    </li>
+		</ul>
+	</div>
+</ons-page>
