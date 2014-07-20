@@ -24,4 +24,8 @@
     <preference name="android-minSdkVersion" value="7" />
     <preference name="android-installLocation" value="auto" />
 
+    <access origin="*"/> <!-- allow all pages, use for development -->
+    <access origin="*.google.com"/>
+    <access origin="*.gstatic.com"/>
+    <access origin="*.googleapis.com"/>
 </widget>
