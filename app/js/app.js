@@ -5,7 +5,7 @@
 	app.factory('Deals', function($http) {
 		var dealId;
 	    var Deals = {
-	        endpoint: 'http://localhost:3333/api',
+	        endpoint: 'http://192.168.0.12:3333/api',
 
 	        setDealId: function(id) {
 	        	dealId = id;
