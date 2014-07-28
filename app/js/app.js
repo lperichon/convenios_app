@@ -100,7 +100,7 @@
 
 
 		// call service
-		$scope.getDeals();
+		//$scope.getDeals();
 	});
 
 	app.controller("markerController", function($scope, $location, Deals) {
