@@ -79,7 +79,9 @@
 		    console.log('code: '    + error.code    + '\n' + 'message: ' + error.message + '\n');
 		}
 		
-		//DO THIS IF NOT MOBILE navigator.geolocation.getCurrentPosition(onSuccess, onError);
+		if( !window.isCordovaApp ) {
+			navigator.geolocation.getCurrentPosition(onSuccess, onError);
+		}
 
 		// Open marker page on click
 		$scope.markersEvents = {
