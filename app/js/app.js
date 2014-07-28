@@ -1,6 +1,28 @@
 (function(){
 	'use strict';
-	var app = angular.module('myApp', ['onsen.directives', 'google-maps']);
+
+	angular.module('fsCordova', [])
+	    .service('CordovaService', ['$document', '$q',
+	        function($document, $q) {
+	            var d = $q.defer(),
+	                resolved = false;
+	            var self = this;
+	            this.ready = d.promise;
+	            document.addEventListener('deviceready', function() {
+	                resolved = true;
+	                d.resolve(window.cordova);
+	            });
+
+	            // Check to make sure we didn't miss the
+	            // event (just in case)
+	            setTimeout(function() {
+	                if (!resolved) {
+	                    if (window.cordova) d.resolve(window.cordova);
+	                }
+	            }, 3000);
+	        }]);
+
+	var app = angular.module('myApp', ['onsen.directives', 'google-maps', 'fsCordova']);
 
 	app.factory('Deals', function($http) {
 		var dealId;
@@ -32,14 +54,18 @@
 	    return Deals;
 	});
 	
-	app.controller("mapController", function($scope, $location, Deals) {
+	app.controller("mapController", function($scope, $location, Deals, CordovaService) {
 	    $scope.map = {
 		    center: {
-		        latitude: 45,
-		        longitude: -73
+		        latitude: 0,
+		        longitude: 0
 		    },
-		    zoom: 8
+		    zoom: 10
 		};
+
+		CordovaService.ready.then(function() {
+            navigator.geolocation.getCurrentPosition(onSuccess, onError);
+        });
 
 		// Center map using geolocation
 		var onSuccess = function(position) {
@@ -53,7 +79,7 @@
 		    console.log('code: '    + error.code    + '\n' + 'message: ' + error.message + '\n');
 		}
 		
-		navigator.geolocation.getCurrentPosition(onSuccess, onError);
+		//DO THIS IF NOT MOBILE navigator.geolocation.getCurrentPosition(onSuccess, onError);
 
 		// Open marker page on click
 		$scope.markersEvents = {
