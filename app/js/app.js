@@ -62,45 +62,6 @@
 		    },
 		    zoom: 10
 		};
-
-		CordovaService.ready.then(function() {
-            navigator.geolocation.getCurrentPosition(onSuccess, onError);
-        });
-
-		// Center map using geolocation
-		var onSuccess = function(position) {
-		    $scope.map.center = {
-		        latitude: position.coords.latitude,
-		        longitude: position.coords.longitude
-		    };
-		    $scope.$apply();
-		}
-		var onError = function(error) {
-		    console.log('code: '    + error.code    + '\n' + 'message: ' + error.message + '\n');
-		}
-		
-		//DO THIS IF NOT MOBILE navigator.geolocation.getCurrentPosition(onSuccess, onError);
-
-		// Open marker page on click
-		$scope.markersEvents = {
-		    click: function (gMarker, eventName, model) {
-		      var element = document.querySelector( ".navigator-container");
-        	  var scope = angular.element( element ).scope();
-        	  // Store the model id on the service for use on the markerController
-        	  Deals.setDealId(model.id);
-		      scope.pushPage('marker.html');
-		    }
-		};
-
-		$scope.getDeals = function() {
-			Deals.getDeals().then(function(data) {
-				$scope.markers = data;
-			});
-		};
-
-
-		// call service
-		//$scope.getDeals();
 	});
 
 	app.controller("markerController", function($scope, $location, Deals) {
