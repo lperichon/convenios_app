@@ -1,0 +1,19 @@
+{
+  "name": "convenios_app",
+  "version": "1.0.0",
+  "description": "Aplicación movil para alumnos de la Sede Martínez del Método DeRose.",
+  "main": "app/index.html",
+  "scripts": {
+    "test": "scripts/test.sh"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lperichon/convenios_app.git"
+  },
+  "author": "Luis Perichon",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lperichon/convenios_app/issues"
+  },
+  "homepage": "https://github.com/lperichon/convenios_app"
+}
